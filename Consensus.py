@@ -28,7 +28,7 @@ def read_prio_types():
 	return prio_dict
 
 
-def pop_prio_dict(ids, prios:
+def pop_prio_dict(ids, prios):
 	prio_dict = read_prio_types()
 	
 	for i, p in zip(ids, prios):
