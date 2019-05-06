@@ -36,6 +36,16 @@ def fill_prio_dict(ids, prios):
 
     return prio_dict
 
+<<<<<<< HEAD
+=======
+def pop_prio_dict(ids, prios):
+	prio_dict = read_prio_types()
+	
+	for i, p in zip(ids, prios):
+		prio_dict[p.prio_type].append(i)
+		
+	return prio_dict
+>>>>>>> e73bc653f1a31becd65fbd2486a810779a310370
 
 def priority_sort(ids, prios):
     prio_dict = fill_prio_dict(ids, prios)
@@ -47,6 +57,7 @@ def priority_sort(ids, prios):
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     ids = ['1', '2', '3']
     prios = [
         Block.Priority('top'),
@@ -54,3 +65,12 @@ if __name__ == "__main__":
         Block.Priority('top')
     ]
     print(priority_sort(ids, prios))
+=======
+	ids = ['1', '2', '3']
+	prios = [Block.Priority('top'), Block.Priority('normal'), Block.Priority('top')]
+	print(priority_sort())
+	
+	
+	
+	
+>>>>>>> e73bc653f1a31becd65fbd2486a810779a310370
