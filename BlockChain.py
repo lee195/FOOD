@@ -10,7 +10,7 @@ import hashlib, Block, random
 random.seed(0)
 
 
-class merkle_tree:
+class MerkleTree:
     def __init__(self, data):
         def hash_data(data_a, data_b):
             hasher = hashlib.sha256()
@@ -38,6 +38,6 @@ class merkle_tree:
 
 
 if __name__ == "__main__":
-    test_tree = merkle_tree([1, 2, 3, 4, 5])
+    test_tree = MerkleTree([1, 2, 3, 4, 5])
     print(test_tree)
     print(test_tree.root)
