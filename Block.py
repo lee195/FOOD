@@ -12,6 +12,32 @@ prio_types = ['normal', 'urgent', 'emergency', 'top']
 random.seed(0)
 
 
+class MerkleTree:
+    def __init__(self, data):
+        def hash_data(data_a, data_b):
+            hasher = hashlib.sha256()
+            hasher.update(str(data_a).encode() + str(data_b).encode())
+            return hasher.hexdigest()
+
+        self.data = [data.copy()]
+        layer = data.copy()
+        while len(layer) > 1:
+            if len(layer) % 2 != 0:
+                layer.append(0)
+            layer = [
+                hash_data(layer[i], layer[i + 1])
+                for i in range(0, len(layer), 2)
+            ]
+            self.data.append(layer)
+        self.root = layer[0]
+
+    def __repr__(self):
+        out = ""
+        for layer in self.data[::-1]:
+            out += str(layer) + "\n"
+        return out[:-1]
+
+
 class Header:
     def __init__(self, prev_hash, timestamp: int):
         self.prev_hash = prev_hash
@@ -33,33 +59,28 @@ class Priority:
 
 
 class Block:
-    def __init__(self, header, prio, data):
+    def __init__(self, header, data):
         self.header = header
-        self.prio = prio
-        self.data = data
+        self.data = MerkleTree(data)
         self.hashed = self.hash_val()
 
     def __repr__(self):
-        return str(self.header.timestamp)
+        return str(self.header) + '\n' + str(self.data)
 
     def hash_val(self):
         hasher = hashlib.sha256()
         hasher.update(str(self.header).encode())
-        hasher.update(str(self.prio).encode())
         hasher.update(str(self.data).encode())
 
         return hasher.hexdigest()
 
 
-def generateGenesis():
+def generate_genesis():
     gen_header = Header("Genesis", 0)
-    gen_prio = Priority('top')
-    return Block(gen_header, gen_prio, [])
+    return Block(gen_header, ['Genesis tx'])
 
 
 if __name__ == "__main__":
-    genesis = generateGenesis()
+    genesis = generate_genesis()
     print(genesis)
-    print(genesis.header)
     print(genesis.hashed)
-    print(genesis.prio)

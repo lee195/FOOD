@@ -15,7 +15,7 @@ def min_hash(ids):
     out = []
     for i in ids:
         hasher = hashlib.sha256()
-        hasher.update(i.encode('utf-8'))
+        hasher.update(i.encode())
         out.append(hasher.hexdigest())
 
     out.sort()
