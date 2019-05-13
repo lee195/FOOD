@@ -1,4 +1,4 @@
-# comm-chain
+# FOOD
 This is a practice project to keep my brain busy while looking for a job.
 
 Fair Object Ordering for Distributed systems(FOOD) based on Blockchain and Correlated Sampling concepts.
