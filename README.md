@@ -7,3 +7,5 @@ Using common randomness to ensure fair ordering mechanisms in order resolution o
 Here I model a blockchain structure from scratch for using the [Correlated Sampling](https://arxiv.org/abs/1612.01041) approach from [Helix](https://www.orbs.com/white-papers/helix-consensus-whitepaper/) as the consensus mechanism.
 
 Essentially this is just a simplified version of [Helix](https://www.orbs.com/white-papers/helix-consensus-whitepaper/).
+
+Since I'm building this from scratch there are probably mistakes made here and there that I will eventually get rid of.
