@@ -39,23 +39,17 @@ class MerkleTree:
 
 
 class Header:
-    def __init__(self, prev_hash, timestamp: int):
+    def __init__(self, prev_hash, timestamp: int, block_hash):
         self.prev_hash = prev_hash
         self.timestamp = timestamp
+        self.block_hash = block_hash
 
     def __repr__(self):
         hasher = hashlib.sha256()
         hasher.update(str(self.prev_hash).encode())
         hasher.update(str(self.timestamp).encode())
+        hasher.update(str(self.block_hash).encode())
         return hasher.hexdigest()
-
-
-class Priority:
-    def __init__(self, prio_type):
-        self.prio_type = prio_type
-
-    def __repr__(self):
-        return self.prio_type
 
 
 class Block:
@@ -76,7 +70,7 @@ class Block:
 
 
 def generate_genesis():
-    gen_header = Header("Genesis", 0)
+    gen_header = Header("Genesis", 0, 0)
     return Block(gen_header, ['Genesis tx'])
 
 
