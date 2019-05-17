@@ -11,6 +11,8 @@ random.seed(0)
 
 memory = []
 
+#TODO: decide consistency model
+
 if __name__ == "__main__":
     print('Blockchain Simulation: Distributed Object Ordering with Fairness\n')
     memory.append(Block.generate_genesis())
