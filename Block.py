@@ -39,16 +39,14 @@ class MerkleTree:
 
 
 class Header:
-    def __init__(self, prev_hash, timestamp: int, block_hash):
+    def __init__(self, prev_hash, merkle_root):
         self.prev_hash = prev_hash
-        self.timestamp = timestamp
-        self.block_hash = block_hash
+        self.merkle_root = merkle_root
 
     def __repr__(self):
         hasher = hashlib.sha256()
         hasher.update(str(self.prev_hash).encode())
-        hasher.update(str(self.timestamp).encode())
-        hasher.update(str(self.block_hash).encode())
+        hasher.update(str(self.merkle_root).encode())
         return hasher.hexdigest()
 
 
@@ -64,14 +62,16 @@ class Block:
     def hash_val(self):
         hasher = hashlib.sha256()
         hasher.update(str(self.header).encode())
-        hasher.update(str(self.data).encode())
+        hasher.update(str(self.data.root).encode())
 
         return hasher.hexdigest()
 
 
 def generate_genesis():
-    gen_header = Header("Genesis", 0, 0)
-    return Block(gen_header, ['Genesis tx'])
+    gen_header = Header("Genesis", 0)
+    genesis = Block(gen_header, ['Genesis tx'])
+    genesis.header.merkle_root = genesis.data.root
+    return genesis
 
 
 if __name__ == "__main__":
