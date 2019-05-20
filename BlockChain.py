@@ -16,3 +16,5 @@ memory = []
 if __name__ == "__main__":
     print('Blockchain Simulation: Distributed Object Ordering with Fairness\n')
     memory.append(Block.generate_genesis())
+    for entry in memory:
+        print(str(entry) + '\n')

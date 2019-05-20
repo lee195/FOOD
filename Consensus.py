@@ -32,7 +32,7 @@ def read_prio_types():
 def fill_prio_dict(ids, prios):
     prio_dict = read_prio_types()
     for i, p in zip(ids, prios):
-        prio_dict[p.prio_type].append(i)
+        prio_dict[p].append(i)
 
     return prio_dict
 
@@ -48,9 +48,5 @@ def priority_sort(ids, prios):
 
 if __name__ == "__main__":
     ids = ['1', '2', '3']
-    prios = [
-        Block.Priority('top'),
-        Block.Priority('normal'),
-        Block.Priority('top')
-    ]
+    prios = ['top', 'normal', 'top']
     print(priority_sort(ids, prios))
