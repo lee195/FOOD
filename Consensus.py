@@ -12,11 +12,11 @@ random.seed(0)
 
 
 def min_hash(ids):
-    out = []
-    for i in ids:
-        hasher = hashlib.sha256()
-        hasher.update(i.encode())
-        out.append(hasher.hexdigest())
+    def hash_data(data):
+        hasher = hashlib.sha256(data.encode())
+        return hasher.hexdigest()
+
+    out = [hash_data(i) for i in ids]
 
     out.sort()
     return out
@@ -39,10 +39,10 @@ def fill_prio_dict(ids, prios):
 
 def priority_sort(ids, prios):
     prio_dict = fill_prio_dict(ids, prios)
-    block_proposal = []
-    for v in prio_dict.values():
-        block_proposal.append(min_hash(v))
+    block_proposal = [min_hash(v) for v in prio_dict.values()]
+    #change priority in list from lowest -> highest to highest -> lowest
     block_proposal.reverse()
+    #return flattened list (there is one list for each priority type in the block proposal)
     return [v for prio_type in block_proposal for v in prio_type]
 
 

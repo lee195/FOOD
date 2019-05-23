@@ -24,6 +24,7 @@ class MerkleTree:
         while len(layer) > 1:
             if len(layer) % 2 != 0:
                 layer.append(0)
+            #replace layer by the pair-wise hash of elements in layer
             layer = [
                 hash_data(layer[i], layer[i + 1])
                 for i in range(0, len(layer), 2)
@@ -67,6 +68,7 @@ class Block:
         return hasher.hexdigest()
 
 
+#TODO: move to different module
 def generate_genesis():
     gen_header = Header("Genesis", 0)
     genesis = Block(gen_header, ['Genesis tx'])
@@ -78,3 +80,5 @@ if __name__ == "__main__":
     genesis = generate_genesis()
     print(genesis)
     print(genesis.hashed)
+    print(100 * '-')
+    print(MerkleTree([1, 2, 3, 4]))
