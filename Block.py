@@ -67,6 +67,9 @@ class Block:
 
         return hasher.hexdigest()
 
+    def get_tx(self):
+        return self.data.data[0]
+
 
 #TODO: move to different module
 def generate_genesis():
@@ -82,3 +85,4 @@ if __name__ == "__main__":
     print(genesis.hashed)
     print(100 * '-')
     print(MerkleTree([1, 2, 3, 4]))
+    print(genesis.get_tx())
