@@ -47,10 +47,9 @@ def priority_sort(ids, prios):
 
 
 def consistency(block_a, block_b):
-    tx_a = block_a.get_tx()
-    tx_b = block_b.get_tx()
-    return sum([1 for t in tx_a if not t in tx_b] +
-               [1 for t in tx_b if not t in tx_a])
+    tx_a = set(block_a.get_tx())
+    tx_b = set(block_b.get_tx())
+    return len(tx_a ^ tx_b)
 
 
 if __name__ == "__main__":
@@ -59,3 +58,5 @@ if __name__ == "__main__":
     print(priority_sort(ids, prios))
     gen = Block.generate_genesis()
     print(consistency(gen, gen))
+    test_block1 = Block.Block([1], 0)
+    print(consistency(gen, test_block1))

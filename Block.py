@@ -52,9 +52,9 @@ class Header:
 
 
 class Block:
-    def __init__(self, header, data):
-        self.header = header
+    def __init__(self, data, prev_hash):
         self.data = MerkleTree(data)
+        self.header = Header(prev_hash, self.data.root)
         self.hashed = self.hash_val()
 
     def __repr__(self):
@@ -73,10 +73,7 @@ class Block:
 
 #TODO: move to different module
 def generate_genesis():
-    gen_header = Header("Genesis", 0)
-    genesis = Block(gen_header, ['Genesis tx'])
-    genesis.header.merkle_root = genesis.data.root
-    return genesis
+    return Block(["Genesis tx"], 0)
 
 
 if __name__ == "__main__":
