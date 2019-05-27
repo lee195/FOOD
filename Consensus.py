@@ -17,7 +17,6 @@ def min_hash(ids):
         return hasher.hexdigest()
 
     out = [hash_data(i) for i in ids]
-
     out.sort()
     return out
 
@@ -33,7 +32,6 @@ def fill_prio_dict(ids, prios):
     prio_dict = read_prio_types()
     for i, p in zip(ids, prios):
         prio_dict[p].append(i)
-
     return prio_dict
 
 

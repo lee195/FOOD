@@ -64,7 +64,6 @@ class Block:
         hasher = hashlib.sha256()
         hasher.update(str(self.header).encode())
         hasher.update(str(self.data.root).encode())
-
         return hasher.hexdigest()
 
     def get_tx(self):
