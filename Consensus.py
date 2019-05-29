@@ -55,6 +55,7 @@ def netsize():
     return 9
 
 
+#Using PBFT for consistency in each round
 def consensus_reached(proposals):
     if len(proposals) < netsize() * 2 // 3:
         return False

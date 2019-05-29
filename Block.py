@@ -60,6 +60,9 @@ class Block:
     def __repr__(self):
         return str(self.header) + '\n' + str(self.data)
 
+    def __eq__(self, other):
+        return str(self.header) == str(other.header)
+
     def hash_val(self):
         hasher = hashlib.sha256()
         hasher.update(str(self.header).encode())
