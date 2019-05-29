@@ -60,7 +60,7 @@ def consensus_reached(proposals):
         return False
     unique_vals = set(proposals)
     for v in unique_vals:
-        if proposals.count(x) >= netsize() * 2 // 3:
+        if proposals.count(v) >= netsize() * 2 // 3:
             #TODO: write consensus result to some location
             return True
     return False
