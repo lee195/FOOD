@@ -13,6 +13,8 @@ memory = []
 
 #TODO: decide consistency model
 
+#TODO: replace with netstats at some point
+
 if __name__ == "__main__":
     print('Blockchain Simulation: Distributed Object Ordering with Fairness\n')
     memory.append(Block.generate_genesis())

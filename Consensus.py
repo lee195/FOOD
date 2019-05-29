@@ -50,6 +50,22 @@ def consistency(block_a, block_b):
     return len(tx_a ^ tx_b)
 
 
+#TODO: replace with netstats later
+def netsize():
+    return 9
+
+
+def consensus_reached(proposals):
+    if len(proposals) < netsize() * 2 // 3:
+        return False
+    unique_vals = set(proposals)
+    for v in unique_vals:
+        if proposals.count(x) >= netsize() * 2 // 3:
+            #TODO: write consensus result to some location
+            return True
+    return False
+
+
 if __name__ == "__main__":
     ids = ['1', '2', '3']
     prios = ['top', 'normal', 'top']
