@@ -59,9 +59,9 @@ def netsize():
 def consensus_reached(proposals):
     if len(proposals) < netsize() * 2 // 3:
         return False
-    unique_vals = set(proposals)
-    for v in unique_vals:
-        if proposals.count(v) >= netsize() * 2 // 3:
+    #TODO: check if counting from unique val-list is faster
+    for p in proposals:
+        if proposals.count(p) >= netsize() * 2 // 3:
             #TODO: write consensus result to some location
             return True
     return False
@@ -75,3 +75,5 @@ if __name__ == "__main__":
     print(consistency(gen, gen))
     test_block1 = Block.Block([1], 0)
     print(consistency(gen, test_block1))
+    print(consensus_reached([gen, gen, gen, gen, gen, gen]))
+    print(consensus_reached([gen, gen, gen, gen, gen, test_block1]))
