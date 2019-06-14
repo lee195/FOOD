@@ -84,12 +84,3 @@ class Block:
 #TODO: move to different module
 def generate_genesis():
     return Block(["Genesis tx"], 0)
-
-
-if __name__ == "__main__":
-    genesis = generate_genesis()
-    print(genesis)
-    print(genesis.hashed)
-    print(100 * '-')
-    print(MerkleTree([1, 2, 3, 4]))
-    print(genesis.get_tx())
