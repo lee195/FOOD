@@ -8,11 +8,16 @@ Created on Tue Apr  2 22:44:41 2019
 
 import hashlib, random
 
+#TODO: consider moving prio types to Consensus
 prio_types = ['normal', 'urgent', 'emergency', 'top']
 random.seed(0)
 
 
 class MerkleTree:
+    """
+    TODO: Clean up impl, consider tree obj, decide necessities for prototype impl
+    """
+
     def __init__(self, data):
         def hash_data(data_a, data_b):
             hasher = hashlib.sha256()
@@ -37,6 +42,9 @@ class MerkleTree:
         for layer in self.data[::-1]:
             out += str(layer) + "\n"
         return out[:-1]
+
+    def verify(tx):
+        return tx in data[0]
 
 
 class Header:
