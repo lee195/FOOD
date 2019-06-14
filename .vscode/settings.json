@@ -1,0 +1,14 @@
+{
+    "spellright.language": [
+        "en_US"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "cSpell.ignoreWords": [
+        "brcs",
+        "dlts"
+    ]
+}
