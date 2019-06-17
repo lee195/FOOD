@@ -105,15 +105,3 @@ def consensus_reached(proposals):
             #TODO: write consensus result to some location
             return True
     return False
-
-
-if __name__ == "__main__":
-    ids = ['1', '2', '3']
-    prios = ['top', 'normal', 'top']
-    print(priority_sort(ids, prios))
-    gen = BlockChain.generate_genesis()
-    print(consistency(gen, gen))
-    test_block1 = Block.Block([1], 0)
-    print(consistency(gen, test_block1))
-    print(consensus_reached([gen, gen, gen, gen, gen, gen]))
-    print(consensus_reached([gen, gen, gen, gen, gen, test_block1]))
