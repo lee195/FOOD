@@ -38,7 +38,10 @@ class MerkleTree:
         self.root = layer[0]
 
     def __repr__(self):
-        return ''.join(str(layer) for layer in self.data[::-1])[:-1]
+        """
+        Return data starting from root to tx data
+        """
+        return ''.join(str(layer) + '\n' for layer in self.data[::-1])[:-1]
 
     def verify(self, tx):
         return tx in self.data[0]
