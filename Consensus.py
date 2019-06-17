@@ -6,7 +6,7 @@ Created on Wed Apr  3 14:28:18 2019
 @author: jisu
 """
 
-import hashlib, Block, random
+import hashlib, Block, random, BlockChain
 
 random.seed(0)
 
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     ids = ['1', '2', '3']
     prios = ['top', 'normal', 'top']
     print(priority_sort(ids, prios))
-    gen = Block.generate_genesis()
+    gen = BlockChain.generate_genesis()
     print(consistency(gen, gen))
     test_block1 = Block.Block([1], 0)
     print(consistency(gen, test_block1))

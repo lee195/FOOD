@@ -19,6 +19,15 @@ class MerkleTree:
     """
 
     def __init__(self, data):
+        """Takes a list of tx and calculates pairwise hashes until only one element remains
+        
+        Parameters:
+            data (list): List of tx
+
+        Sets:
+            self.data (nested list): List of original data and all lists of pairwise hashes
+        """
+
         def hash_data(data_a, data_b):
             hasher = hashlib.sha256()
             hasher.update(str(data_a).encode() + str(data_b).encode())
@@ -79,8 +88,3 @@ class Block:
 
     def get_tx(self):
         return self.data.data[0]
-
-
-#TODO: move to different module
-def generate_genesis():
-    return Block(["Genesis tx"], 0)

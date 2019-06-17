@@ -15,6 +15,11 @@ memory = []
 
 #TODO: replace with netstats at some point
 
+
+def generate_genesis():
+    return Block.Block(['Genesis tx'], 0)
+
+
 if __name__ == "__main__":
     print('Blockchain Simulation: Distributed Object Ordering with Fairness\n')
     memory.append(Block.generate_genesis())
