@@ -1,3 +1,5 @@
+![build status](https://travis-ci.org/lee195/FOOD.svg?branch=master)
+
 # FOOD
 This is a practice project to keep my brain busy while looking for a job.
 
