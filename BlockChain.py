@@ -11,10 +11,6 @@ random.seed(0)
 
 memory = []
 
-#TODO: decide consistency model
-
-#TODO: replace with netstats at some point
-
 
 def generate_genesis():
     return Block.Block(['Genesis tx'], 0)
