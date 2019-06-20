@@ -14,6 +14,8 @@ class CappedHash:
     """Hash container of fixed capacity"""
 
     def __init__(self, data, capacity):
+        """Inits self.data as the last n elements of data where n is capacity.
+        """
         self.cap = capacity
         if len(data) > capacity:
             self.data = dict(enumerate(data[-capacity:]))
@@ -25,6 +27,7 @@ class CappedHash:
         return self.data.__str__()
 
     def add_entry(self, entry):
+        """Adds entry to the container. The oldest entry is replaced at full cap."""
         self.data[self.ptr % self.cap] = entry
         self.ptr += 1
 
@@ -40,5 +43,4 @@ memory = CappedHash([generate_genesis()], 10)
 
 if __name__ == "__main__":
     print('Blockchain Simulation: Distributed Object Ordering with Fairness\n')
-    for k, v in memory.data.items():
-        print(str(k) + '\n' + str(v))
+    print(memory)
